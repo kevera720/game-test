@@ -38,15 +38,19 @@ public class Papper : MonoBehaviour
         text.GetComponent<TMP_Text>().text = textPaper;
         if(showText)
         {
-            havepick = true;
-            paper.SetActive(true);
-            text.SetActive(true);
-
-                        if(Input.GetKeyDown(KeyCode.F))
+            if(havepick)
+            {
+                                   if(Input.GetKeyUp(KeyCode.F))
                         {  
                                 showText = false;
 
                         }
+                        }
+            havepick = true;
+            paper.SetActive(true);
+            text.SetActive(true);
+
+ 
         }  
         else
         {

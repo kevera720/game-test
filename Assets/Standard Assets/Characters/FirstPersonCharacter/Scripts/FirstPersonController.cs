@@ -43,6 +43,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public GameObject gameManager;
+
         // Use this for initialization
         private void Start()
         {
@@ -58,7 +60,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
-
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.tag == "Base1")
+            {
+                gameManager.GetComponent<GameManager>().basementright = true;
+                gameManager.GetComponent<GameManager>().SpawnMusicBox();
+            }
+            if(other.gameObject.tag == "Base2")
+            {
+                gameManager.GetComponent<GameManager>().basementright = false;
+                gameManager.GetComponent<GameManager>().SpawnMusicBox();
+            }
+        }
         // Update is called once per frame
         private void Update()
         {

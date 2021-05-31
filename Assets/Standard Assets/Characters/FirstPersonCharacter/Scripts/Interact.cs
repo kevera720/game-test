@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
+
+    public GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
+ 
     // Update is called once per frame
     void Update()
     {
@@ -22,8 +24,15 @@ public class Interact : MonoBehaviour
                         {   
                             if(hit.collider.gameObject.tag == "Door")
                             {
+                                if(hit.collider.gameObject.GetComponent<DoorBase>())
+                                {
+                                    gameManager.GetComponent<GameManager>().StartRun();
+                                }
                                 hit.collider.gameObject.GetComponent<Door>().ChangeDoorState();
                             }
+                            }
+                        if(Input.GetKey(KeyCode.F))
+                        {   
                             if(hit.collider.gameObject.tag == "Papper")
                             {
                                 hit.collider.gameObject.GetComponent<ThePapper>().ShowPapper();

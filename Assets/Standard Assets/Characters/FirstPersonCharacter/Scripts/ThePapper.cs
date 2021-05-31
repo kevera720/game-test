@@ -20,13 +20,8 @@ public class ThePapper : MonoBehaviour
     public void ShowPapper()
     {
         Player.GetComponentInChildren<Papper>().paperid = id;
-        if(Player.GetComponentInChildren<Papper>().showText)
-        {
-            Player.GetComponentInChildren<Papper>().showText = false;
-        }
-        else
-        {
+
             Player.GetComponentInChildren<Papper>().showText = true;
-        }
+        
     }
 }
