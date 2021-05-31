@@ -24,6 +24,10 @@ public class Interact : MonoBehaviour
                             {
                                 hit.collider.gameObject.GetComponent<Door>().ChangeDoorState();
                             }
+                            if(hit.collider.gameObject.tag == "Papper")
+                            {
+                                hit.collider.gameObject.GetComponent<ThePapper>().ShowPapper();
+                            }
                         }
             }
     }
