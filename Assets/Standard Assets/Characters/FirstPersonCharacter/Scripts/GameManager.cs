@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public bool basementright;
 
     public int basementwalk;
+
+    public GameObject Monster;
     void Start()
     {
         
@@ -62,6 +64,19 @@ public class GameManager : MonoBehaviour
         }
         if(basementwalk >= 3)
         {
+              Monster.SetActive(true);
+             
+              Vector3 PlayerPos = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z);
+               Monster.transform.LookAt(PlayerPos);
+            if(!basementright)
+            {
+                Monster.transform.position = new Vector3(musicBoxRight.transform.position.x, Player.transform.position.y, musicBoxRight.transform.position.z);
+            }
+            else
+            {
+                Monster.transform.position = new Vector3(musicBoxLeft.transform.position.x, Player.transform.position.y, musicBoxLeft.transform.position.z);
+            }
+            //Monster.transform.position = Vector3.MoveTowards(Monster.transform.position, PlayerPos, 5f);
             ScareAudio.GetComponent<AudioSource>().PlayOneShot(violinpunch, 1f);
             musicBoxLeft.GetComponent<AudioSource>().clip = ghost;
              musicBoxLeft.GetComponent<AudioSource>().Play();
